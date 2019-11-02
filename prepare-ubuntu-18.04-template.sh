@@ -52,8 +52,7 @@ apt clean
 sudo cloud-init clean --logs
 
 #cleanup shell history
-cat /dev/null > ~/.bash_history && history -c
-history -w
+history -c && history -w
 
 #shutdown
 shutdown -h now
