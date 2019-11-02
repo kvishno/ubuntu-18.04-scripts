@@ -41,9 +41,9 @@ rm -rf /var/tmp/*
 rm -f /etc/ssh/ssh_host_*
 
 # prevent cloudconfig from preserving the original hostname
-sed -i 's/preserve_hostname: false/preserve_hostname: true/g' /etc/cloud/cloud.cfg
-truncate -s0 /etc/hostname
-hostnamectl set-hostname base-vm
+# sed -i 's/preserve_hostname: false/preserve_hostname: true/g' /etc/cloud/cloud.cfg
+# truncate -s0 /etc/hostname
+# hostnamectl set-hostname base-vm
 
 #cleanup apt
 apt clean
