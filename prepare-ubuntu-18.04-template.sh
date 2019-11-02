@@ -42,8 +42,11 @@ rm -f /etc/ssh/ssh_host_*
 
 # prevent cloudconfig from preserving the original hostname
 # sed -i 's/preserve_hostname: false/preserve_hostname: true/g' /etc/cloud/cloud.cfg
-# truncate -s0 /etc/hostname
-# hostnamectl set-hostname base-vm
+truncate -s0 /etc/hostname
+hostnamectl set-hostname ''
+
+# Remove snapd service
+apt-get -y remove --purge snapd
 
 #cleanup apt
 apt clean
