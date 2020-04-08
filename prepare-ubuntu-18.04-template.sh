@@ -53,7 +53,7 @@ EOL
 chmod +x /etc/rc.local
 
 # Prevent cloudconfig from preserving the original hostname
-# sed -i 's/preserve_hostname: false/preserve_hostname: true/g' /etc/cloud/cloud.cfg
+sed -i 's/preserve_hostname: false/preserve_hostname: true/g' /etc/cloud/cloud.cfg
 truncate -s0 /etc/hostname
 hostnamectl set-hostname ''
 
@@ -72,6 +72,8 @@ cp /dev/null /etc/machine-id
 # Remove unwanted MOTD detail
 chmod -x /etc/update-motd.d/10-help-text
 chmod -x /etc/update-motd.d/50-motd-news
+
+# VMware fix
 if [ ! -e vmwarefixran.log ]; then
   echo vmware customization fix https://kb.vmware.com/s/article/56409
   sed -i 's/^D \/tmp 1777 root root -/#D \/tmp 1777 root root -/' /usr/lib/tmpfiles.d/tmp.conf
